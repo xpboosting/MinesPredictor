@@ -1,9 +1,8 @@
-
+from keep_alive import keep_alive
 from discord.ext import commands
 import os
 import discord
 import random
-from keep_alive import keep_alive
 bot = commands.Bot(command_prefix='.', intents=discord.Intents.all())
 
 @bot.command()
@@ -83,7 +82,8 @@ async def mines (ctx):
 async def on_ready():
     activity = discord.Game(name="forum.syx.wtf | .mines ", type=3)
     await bot.change_presence(status=discord.Status.idle, activity=activity),
-    keep_alive()
     print("Bot is ready!")
-
-bot.run(os.getenv('TOKEN'))
+  
+keep_alive()
+token = os.environ.get("TOKEN")
+bot.run(token)
